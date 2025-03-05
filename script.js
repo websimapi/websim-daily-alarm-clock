@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const alarmStatusEl = document.getElementById('alarm-status');
   const alarmControlsEl = document.getElementById('alarm-controls');
   const alarmSound = document.getElementById('alarm-sound');
+  const secondAlarmSound = document.getElementById('second-alarm-sound');
   
   // Variables
   let alarmTime = null;
@@ -74,8 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function ringAlarm() {
     isAlarmRinging = true;
-    alarmSound.loop = true;
+    alarmSound.loop = false;
     alarmSound.play();
+    
+    // Add event listener for when first sound ends
+    alarmSound.addEventListener('ended', playSecondSound, { once: true });
     
     // Add visual indication
     alarmStatusEl.textContent = 'ALARM RINGING! Click to stop.';
@@ -92,9 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 60000);
   }
   
+  function playSecondSound() {
+    if (isAlarmRinging) {
+      secondAlarmSound.loop = true;
+      secondAlarmSound.play();
+    }
+  }
+  
   function stopAlarm() {
     alarmSound.pause();
     alarmSound.currentTime = 0;
+    secondAlarmSound.pause();
+    secondAlarmSound.currentTime = 0;
+    alarmSound.removeEventListener('ended', playSecondSound);
     isAlarmRinging = false;
     alarmStatusEl.classList.remove('alarm-active');
     alarmStatusEl.removeEventListener('click', stopAlarm);
@@ -103,6 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function testAlarm() {
     alarmSound.loop = false;
+    alarmSound.addEventListener('ended', () => {
+      secondAlarmSound.loop = false;
+      secondAlarmSound.play();
+    }, { once: true });
     alarmSound.play();
   }
   
