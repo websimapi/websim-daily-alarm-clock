@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #bb86fc;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.clock-container {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.current-time {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #03dac6;
+  text-shadow: 0 0 10px rgba(3, 218, 198, 0.3);
+}
+
+.alarm-container {
+  background-color: #2d2d2d;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.time-picker {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-input {
+  flex: 1;
+  padding: 0.8rem;
+  background-color: #3d3d3d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  background-color: #bb86fc;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #a370db;
+}
+
+.btn-secondary {
+  background-color: #03dac6;
+}
+
+.btn-secondary:hover {
+  background-color: #00b5a5;
+}
+
+.btn-danger {
+  background-color: #cf6679;
+}
+
+.btn-danger:hover {
+  background-color: #b55465;
+}
+
+.alarm-status {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  background-color: #3d3d3d;
+  border-radius: 4px;
+}
+
+.alarm-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.alarm-active {
+  animation: pulse 2s infinite;
+  background-color: #cf6679;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(207, 102, 121, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(207, 102, 121, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(207, 102, 121, 0);
+  }
+}
+
+@media (max-width: 480px) {
+  .time-picker {
+    flex-direction: column;
+  }
+  
+  .current-time {
+    font-size: 2.5rem;
+  }
+}
+
