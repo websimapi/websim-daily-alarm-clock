@@ -6,7 +6,15 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
+  <div id="permission-overlay" class="permission-overlay">
+    <div class="permission-container">
+      <h2>Daily Alarm Clock</h2>
+      <p>To ensure alarms work properly, please click the button below:</p>
+      <button id="enable-audio" class="btn btn-primary">Enable Alarm Sound</button>
+    </div>
+  </div>
+
+  <div id="main-app" class="container hidden">
     <h1>Daily Alarm Clock</h1>
     
     <div class="clock-container">
